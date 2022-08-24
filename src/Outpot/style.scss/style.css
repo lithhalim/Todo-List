@@ -77,4 +77,10 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+
+.pagination {
+  margin-left: 150px;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
 /*# sourceMappingURL=style.css.map */

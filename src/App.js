@@ -6,21 +6,25 @@ import Output from './Outpot/output';
 import { store } from './redux/store'
 import { Provider } from 'react-redux'
 
+import {Color_Provider} from './context-api/change-theme';
 
 
 import "./style/style.scss"
 
 function App() {
   return (
-    <Provider store={store}>
-        <StrictMode>
-            <Header/>
-                <div className="container-icon" >
-                    <Form/>
-                    <Output/>
-                </div>
-        </StrictMode>
-    </Provider>
+
+    <Color_Provider>
+        <Provider store={store}>
+            <StrictMode>
+                <Header/>
+                    <div className="container-icon" >
+                        <Form/>
+                        <Output/>
+                    </div>
+            </StrictMode>
+        </Provider>
+    </Color_Provider>
   )
 }
 

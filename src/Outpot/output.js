@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Card from "../Outpot/Card";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
@@ -11,7 +11,7 @@ import Stack from '@mui/material/Stack';
 
 function Output() {
   const [alignment, setAlignment] = React.useState('allType');
-  const [paginationPage,setpaginationPage]=useState('1')
+  const [paginationPage,setpaginationPage]=useState('1');
 
   const select =useSelector(state=>state.AddItemReducer);
 
@@ -48,7 +48,7 @@ function Output() {
   }
 
   return (
-    <div className="output-container">
+    <div className="output-container" >
           <ToggleButtonGroup
             color="primary"
             value={alignment}
@@ -70,9 +70,6 @@ function Output() {
               <Pagination count={10} variant="outlined"  onChange={pagination}/>
             </Stack>
           </div>
-
-          
-
     </div>
   )
 }

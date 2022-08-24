@@ -12,10 +12,12 @@ $main-header-color:rgb(228, 228, 228);
 
 *{@extend %main}
 
+
 .header-container {
     background-color: $main-header-background;
     color: $main-header-color;
     padding: 10px;
+    display: flex; justify-content: space-around;
     .main-nav {
         @extend %flex;
         justify-content: start;
@@ -25,6 +27,20 @@ $main-header-color:rgb(228, 228, 228);
             text-transform: uppercase;
         }
     }
+
+
+    .color-changer {
+        position: absolute;top: 50px;
+        right: 230px;z-index: 10000;
+    }
+    .changeName-button {
+        cursor: pointer; text-transform: capitalize; font-weight: bold;
+        font-size: 1.3em; display: flex;align-items: center; color: white;
+          span {
+            margin-right: 10px;
+          }
+    }
+    
 }
 
 .header-outpot {
@@ -36,6 +52,10 @@ $main-header-color:rgb(228, 228, 228);
 .header-outpot {
     display: flex;align-items: center;justify-content: space-between;
 }
+
+
+
+
 @media screen and (max-width:1300px) {
     .header-outpot {
         margin: 10px 0px; 
