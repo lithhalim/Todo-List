@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import "./style/style.scss";
 
 import { Login_Create_Context } from '../context-api/context-authntication';
@@ -7,14 +7,18 @@ import { useNavigate } from 'react-router';
 
 function Login() {
     const login_create=useContext(Login_Create_Context);
-    const Navi=useNavigate()
+    const [state,setstate]=useState(false)
 
     const Data_Login=(e)=>{
         e.preventDefault();
         let UserName=e.currentTarget.Username.value;
         let Password=e.currentTarget.Password.value;
         login_create.setUserName_Password({UserName:UserName,Password:Password})
+        if(window.location.href){
+            setstate(true)
+        }
     }
+
 
 
 
@@ -35,7 +39,7 @@ function Login() {
                 </div>
                 <input type="submit" value="Login" style={{marginBottom:"50px"}}/>
             </form>
-            {login_create.error?<motion.p style={{width:"190px",marginLeft:"auto",marginRight:"auto",marginBottom:"15px",color:"red" }}>Error Email Or Password</motion.p>:<></>}
+            {state?<motion.p style={{width:"190px",marginLeft:"auto",marginRight:"auto",marginBottom:"15px",color:"red" }}>Error Email Or Password</motion.p>:<></>}
         </div>
 
       

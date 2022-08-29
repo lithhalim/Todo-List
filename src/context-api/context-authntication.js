@@ -32,7 +32,6 @@ const testUsers = {
 
 export function Login_Provider(props) {
     const [UserName_Password,setUserName_Password]=useState(window.localStorage.token!==undefined?JSON.parse(window.localStorage.token):"");
-    const [error,setError]=useState(false)
     //check the username and password are valid or not 
     if(UserName_Password!==""){
         const {UserName,Password}=UserName_Password;
@@ -42,17 +41,14 @@ export function Login_Provider(props) {
                     let DataUse=jwt_decode(testUsers[UserName].token)
                     window.localStorage.token=JSON.stringify(DataUse);
                     window.location.href="/home";
-                    
-                }else{
-                  setError(true)
-              }
+                }
             }
     }
 
 
 
   return (
-    <Login_Create_Context.Provider value={{setUserName_Password,UserName_Password,error}}>
+    <Login_Create_Context.Provider value={{setUserName_Password,UserName_Password}}>
         {props.children}
     </Login_Create_Context.Provider>
   )
