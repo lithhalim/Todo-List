@@ -6,10 +6,10 @@ export const Color_Change_context=React.createContext()
 
 export function Color_Provider(props) {
     const [color,setcolor]=useState('dark');
-
+    const [Number_Pagination,setNumber_Pagination]=useState(window.localStorage.NumberItemPagination?window.localStorage.NumberItemPagination:3)
 
   return (
-    <Color_Change_context.Provider value={{setcolor,color}}>
+    <Color_Change_context.Provider value={{setcolor,color,setNumber_Pagination,Number_Pagination}}>
         {props.children}
     </Color_Change_context.Provider>
   )

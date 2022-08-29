@@ -4,11 +4,10 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
 
-
 import {addItem} from '../redux/addItem';
 import { useDispatch, useSelector } from 'react-redux';
 
-
+import { Login_Create_Context } from '../context-api/context-authntication';
 
 function Form() {
     const data_Use=useRef();
@@ -27,30 +26,44 @@ function Form() {
         let status='pending'
 
         dispatch(addItem({Difficalty:Difficalty,itemDetails:itemDetails,assignname:assignname,id:id,status:status}))
-        
     }
+
+    const Authntication=useContext(Login_Create_Context);
+    if(Authntication.UserName_Password==""){window.location.href="/"}
+    const {capabilities}=Authntication.UserName_Password;
+    let CheckCapipilty=capabilities.search("create")
+ 
 
 
   return (
-        <div className="form-container" >
-            <p>Add To  Do Item</p>
-                <form ref={data_Use}>
-                    <label>to do item</label>
-                    <input id="outlined-basic" placeholder="item Details" className="inpit" name="itemDetails" />
+    <>
+                {CheckCapipilty!==-1?
 
-                    <label>to do item</label>
-                    <input id="outlined-basic" placeholder="Assignee Name" label="Outlined"  className="inpit" name="assignname"/>   
-                    <label>difficuilty</label>
-                    <Box>
-                        <Slider defaultValue={50} aria-label="Default" valueLabelDisplay="auto" name="sliderSection" />
-                    </Box>
-                    <div onClick={Add_Item}>
-                        <Button variant="contained" >Add Item</Button>
-                    </div>
-                    
-                </form>
+    
+        <div className="form-container" >
+                <div>
+                    <p>Add To  Do Item</p>
+                    <form ref={data_Use}>
+                        <label>to do item</label>
+                        <input id="outlined-basic" placeholder="item Details" className="inpit" name="itemDetails" />
+
+                        <label>to do item</label>
+                        <input id="outlined-basic" placeholder="Assignee Name" label="Outlined"  className="inpit" name="assignname"/>   
+                        <label>difficuilty</label>
+                        <Box>
+                            <Slider defaultValue={50} aria-label="Default" valueLabelDisplay="auto" name="sliderSection" />
+                        </Box>
+                        <div onClick={Add_Item}>
+                            <Button variant="contained" >Add Item</Button>
+                        </div>
+                        
+                    </form>
+                </div>
         
         </div>
+         :<div style={{width:"140px"}}></div>}
+</>
+
 
   )
 }

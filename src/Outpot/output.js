@@ -8,12 +8,16 @@ import Stack from '@mui/material/Stack';
 
 
 
+import {Color_Change_context} from "../context-api/change-theme"
+
+
 
 function Output() {
   const [alignment, setAlignment] = React.useState('allType');
   const [paginationPage,setpaginationPage]=useState('1');
-
   const select =useSelector(state=>state.AddItemReducer);
+  const DataPagination=useContext(Color_Change_context)
+
 
 
 
@@ -35,7 +39,7 @@ function Output() {
     })
     let dataUse=padding.concat(complite)
 
-    let dataModify=dataUse.slice((paginationPage-1)*3,(paginationPage)*3)
+    let dataModify=dataUse.slice((paginationPage-1)*DataPagination.Number_Pagination,(paginationPage)*DataPagination.Number_Pagination)
       if(alignment!=='allType'){
           dataUsing=dataModify.map((a,i)=>{
               if(a.status==alignment){

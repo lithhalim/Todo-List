@@ -25,6 +25,7 @@ $main-header-color:rgb(228, 228, 228);
             padding: 0px 15px;
             cursor: pointer;
             text-transform: uppercase;
+            display: flex;align-items: center;
         }
     }
 
@@ -55,6 +56,13 @@ $main-header-color:rgb(228, 228, 228);
 
 
 
+label {
+    margin-right: 10px;
+}
+.header-select {
+    padding: 5px 10px; text-transform: capitalize;font-weight: bold;
+    border-radius: 5px;
+}
 
 @media screen and (max-width:1300px) {
     .header-outpot {
