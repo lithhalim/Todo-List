@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import "./style/style.scss";
 
 import { Login_Create_Context } from '../context-api/context-authntication';
 import {motion} from "framer-motion"
+import { useNavigate } from 'react-router';
 
 function Login() {
     const login_create=useContext(Login_Create_Context);
+    const Navi=useNavigate()
 
     const Data_Login=(e)=>{
         e.preventDefault();

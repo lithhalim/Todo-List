@@ -37,17 +37,16 @@ export function Login_Provider(props) {
     if(UserName_Password!==""){
         const {UserName,Password}=UserName_Password;
 
-        useEffect(()=>{
               if(testUsers[UserName]){
                 if(testUsers[UserName].password==Password){
                     let DataUse=jwt_decode(testUsers[UserName].token)
                     window.localStorage.token=JSON.stringify(DataUse);
                     window.location.href="/home";
+                    
                 }else{
                   setError(true)
               }
             }
-        },[UserName,Password])
     }
 
 
